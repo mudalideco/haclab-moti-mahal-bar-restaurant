@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 import { MapPin, Clock, Phone, Car } from 'lucide-react'
 import { business } from '@/data/content'
 
-const Map = dynamic(() => import('@/components/MapEmbed').then(m => ({ default: m.default })), {
+const Map = dynamic(() => import('@/components/MapEmbed'), {
   ssr: false,
   loading: () => <div className="h-80 bg-muted animate-pulse rounded-lg" />
 })

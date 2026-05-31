@@ -16,8 +16,8 @@ import { FinalCTA } from '@/components/sections/FinalCTA'
 import { Footer } from '@/components/sections/Footer'
 import { BackToTop } from '@/components/sections/BackToTop'
 
-const Header = dynamic(() => import('@/components/sections/Header').then(m => ({ default: m.Header })))
-const Hero = dynamic(() => import('@/components/sections/Hero').then(m => ({ default: m.Hero })))
+const Header = dynamic(() => import('@/components/sections/Header').then(m => m.Header))
+const Hero = dynamic(() => import('@/components/sections/Hero').then(m => m.Hero))
 
 export default function Home() {
   return (
