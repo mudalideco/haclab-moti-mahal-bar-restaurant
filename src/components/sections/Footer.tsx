@@ -1,0 +1,102 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+
+const footerLinks = [
+  { label: 'Menu', href: '#menu' },
+  { label: 'About', href: '#about' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Contact', href: '#contact' },
+]
+
+const socialLinks = [
+  { label: 'Facebook', href: 'https://facebook.com/motimahaljinja', icon: 'facebook' },
+]
+
+export function Footer() {
+  return (
+    <footer className="bg-foreground text-white/80">
+      <div className="container-wide py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <h3 className="font-heading text-2xl font-bold text-white mb-4">Moti Mahal</h3>
+            <p className="text-white/60 leading-relaxed mb-6">
+              Authentic Indian cuisine in Jinja since 1947. Tandoori chicken, butter chicken, and our famous Kulfi milkshake.
+            </p>
+            <p className="text-sm text-white/40">
+              46 Iganga Rd, Jinja, Uganda
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-medium text-white mb-4">Quick Links</h4>
+            <ul className="space-y-3">
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="text-white/60 hover:text-accent transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-medium text-white mb-4">Contact</h4>
+            <ul className="space-y-3 text-white/60">
+              <li>
+                <a href="tel:+256757879048" className="hover:text-accent transition-colors">
+                  +256 757 879048
+                </a>
+              </li>
+              <li>
+                <a href={socialLinks[0].href} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                  @motimahaljinja
+                </a>
+              </li>
+              <li>Open daily: 11AM - 10PM</li>
+            </ul>
+          </div>
+
+          {/* Newsletter / Social */}
+          <div>
+            <h4 className="font-medium text-white mb-4">Follow Us</h4>
+            <div className="flex gap-4">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-foreground transition-colors"
+                  aria-label={link.label}
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-white/40">
+            &copy; {new Date().getFullYear()} Moti Mahal Bar & Restaurant. All rights reserved.
+          </p>
+          <p className="text-sm text-white/40">
+            Powered by{' '}
+            <Link href="https://haclab.net" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+              Haclab Co Ltd
+            </Link>
+          </p>
+        </div>
+      </div>
+    </footer>
+  )
+}

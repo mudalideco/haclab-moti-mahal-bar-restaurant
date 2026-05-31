@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────── */
+:root {
+  /* Colors */
+  --primary: #8B1A2B;
+  --primary-hover: #6E1421;
+  --background: #FDF8F0;
+  --foreground: #1A1718;
+  --muted: #F5EDE0;
+  --muted-foreground: #6B5E52;
+  --accent: #C9A84C;
+  --accent-hover: #B8973C;
+  --surface: #FFFBF5;
+  --border: #E8DDD0;
+  --destructive: #B91C1C;
+  --ring: #8B1A2B;
+  --white: #FFFFFF;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 2px 8px rgba(26, 23, 24, 0.06), 0 1px 2px rgba(26, 23, 24, 0.04);
+  --shadow-elevated: 0 8px 24px rgba(26, 23, 24, 0.08);
+  --shadow-nav: 0 1px 3px rgba(26, 23, 24, 0.06);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-ring: var(--ring);
+  --color-white: var(--white);
+
+  --font-heading: "Playfair Display", serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-accent: "Cormorant Garamond", serif;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  --animate-fade-up: fade-up 0.6s ease-out;
+  --animate-scale-in: scale-in 0.5s ease-out;
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: -200% center; }
+    50% { background-position: 200% center; }
+  }
+
+  @keyframes clip-reveal {
+    from { clip-path: inset(100% 0 0 0); }
+    to { clip-path: inset(0% 0 0 0); }
+  }
+
+  --animate-clip-reveal: clip-reveal 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+/* ─── Base Styles ──────────────────────────────── */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ─── Utility Classes ──────────────────────────── */
+.section-padding {
+  padding: 5rem 1.25rem;
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 7rem 2rem;
+  }
+}
+
+.clip-reveal {
+  animation: clip-reveal 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.container-wide {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ─── Scrollbar ────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--muted); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-hover); }
+
+/* ─── Swiper Pagination ────────────────────────── */
+.swiper-pagination-bullet-active {
+  background: var(--primary) !important;
+}
+
+/* ─── Leaflet overrides ────────────────────────── */
+.leaflet-container {
+  border-radius: var(--radius-lg);
+  z-index: 0;
+}
+
+/* ─── Focus Styles ─────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

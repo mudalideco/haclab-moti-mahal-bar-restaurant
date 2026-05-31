@@ -1,0 +1,10 @@
+/* ─── Additional Animations ─────────────────────── */
+@keyframes clip-reveal {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0% 0 0 0); }
+}
+
+.clip-reveal {
+  animation: clip-reveal 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation-trigger: scroll;
+}
