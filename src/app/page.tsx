@@ -1,6 +1,5 @@
-import dynamic from 'next/dynamic'
-
-// Dynamic imports for client-only sections (avoid SSR issues)
+import { Header } from '@/components/sections/Header'
+import { Hero } from '@/components/sections/Hero'
 import { ThaliSpotlight } from '@/components/sections/ThaliSpotlight'
 import { MenuPreview } from '@/components/sections/MenuPreview'
 import { AboutHeritage } from '@/components/sections/AboutHeritage'
@@ -15,9 +14,6 @@ import { FAQ } from '@/components/sections/FAQ'
 import { FinalCTA } from '@/components/sections/FinalCTA'
 import { Footer } from '@/components/sections/Footer'
 import { BackToTop } from '@/components/sections/BackToTop'
-
-const Header = dynamic(() => import('@/components/sections/Header').then(m => m.Header))
-const Hero = dynamic(() => import('@/components/sections/Hero').then(m => m.Hero))
 
 export default function Home() {
   return (
