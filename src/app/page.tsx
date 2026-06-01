@@ -3,6 +3,7 @@ import { Hero } from '@/components/sections/Hero'
 import { ThaliSpotlight } from '@/components/sections/ThaliSpotlight'
 import { MenuPreview } from '@/components/sections/MenuPreview'
 import { AboutHeritage } from '@/components/sections/AboutHeritage'
+import { LegacyTimeline } from '@/components/sections/LegacyTimeline'
 import { DiningExperience } from '@/components/sections/DiningExperience'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { FoodGallery } from '@/components/sections/FoodGallery'
@@ -24,6 +25,7 @@ export default function Home() {
         <ThaliSpotlight />
         <MenuPreview />
         <AboutHeritage />
+        <LegacyTimeline />
         <DiningExperience />
         <Testimonials />
         <FoodGallery />

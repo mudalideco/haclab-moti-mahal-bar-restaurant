@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { MagneticButton } from '@/components/primitives/MagneticButton'
@@ -16,10 +17,12 @@ export function ThaliSpotlight() {
           {/* Image Side */}
           <div className="relative group">
             <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
-              <img
+              <Image
                 src={THALI_IMAGE}
                 alt="Moti Mahal Signature Thali meal with assorted curries, breads, and accompaniments"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             {/* Decorative Frame */}

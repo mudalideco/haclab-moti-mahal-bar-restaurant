@@ -1,13 +1,16 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { ArrowRight, Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { MagneticButton } from '@/components/primitives/MagneticButton'
 import { ParallaxLayer } from '@/components/primitives/ParallaxLayer'
+import { SplitReveal } from '@/components/primitives/SplitReveal'
 import { business } from '@/data/content'
 
-const HERO_IMAGE = "https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=1600&auto=format&fit=crop"
+const HERO_IMAGE =
+  'https://images.unsplash.com/photo-1585937421612-70a008356fbe?q=80&w=1600&auto=format&fit=crop'
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -23,10 +26,16 @@ export function Hero() {
     >
       {/* Background Image with Parallax */}
       <ParallaxLayer depth={0.25} className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
-        />
+        <div className="relative w-full h-full">
+          <Image
+            src={HERO_IMAGE}
+            alt="Tandoori chicken and Indian cuisine platter at Moti Mahal"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </div>
       </ParallaxLayer>
 
       {/* Overlay */}
@@ -41,11 +50,16 @@ export function Hero() {
             Since 1947 — Born in Delhi
           </div>
 
-          {/* Headline */}
+          {/* Headline — premium SplitReveal */}
           <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-            Authentic Indian Flavors.
-            <br />
-            <span className="text-accent">Right Here in Jinja.</span>
+            <SplitReveal
+              type="words"
+              stagger={0.04}
+              duration={0.9}
+              ease="power3.out"
+            >
+              Authentic Indian Flavors. Right Here in Jinja.
+            </SplitReveal>
           </h1>
 
           {/* Subtitle */}
@@ -58,11 +72,15 @@ export function Hero() {
             <MagneticButton>
               <Button
                 size="lg"
-                className="gap-2 text-base"
+                className="gap-2 text-base group relative overflow-hidden"
                 onClick={scrollToMenu}
               >
-                View Our Menu
-                <ArrowRight className="w-4 h-4" />
+                <span className="relative z-10 flex items-center gap-2">
+                  View Our Menu
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+                {/* Pulse glow ring */}
+                <span className="absolute inset-0 rounded-md ring-2 ring-accent/40 animate-pulse-slow group-hover:ring-accent/70 transition-all duration-500" />
               </Button>
             </MagneticButton>
             <a
