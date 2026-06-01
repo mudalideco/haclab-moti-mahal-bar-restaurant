@@ -6,16 +6,12 @@ import gsap from 'gsap'
 interface MagneticButtonProps {
   children: React.ReactNode
   className?: string
-  as?: 'button' | 'a'
-  href?: string
   onClick?: () => void
 }
 
 export function MagneticButton({
   children,
   className,
-  as: Tag = 'button',
-  href,
   onClick,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null)
@@ -31,22 +27,15 @@ export function MagneticButton({
     gsap.to(ref.current, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' })
   }
 
-  const Comp = Tag === 'a' ? 'a' : 'button'
-
   return (
     <div
       ref={ref}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className="inline-block"
+      onClick={onClick}
+      className={`inline-block ${className || ''}`}
     >
-      <Comp
-        href={href}
-        onClick={onClick}
-        className={className}
-      >
-        {children}
-      </Comp>
+      {children}
     </div>
   )
 }
